@@ -17,7 +17,7 @@ def gen_inital(length):
 def next(feedback,array):
     new = array[-1]
     for i in feedback:
-        new = new^array[i-1]
+        new = new^array[-i-1]
     return new
 
 def main(feedback,m):
@@ -34,5 +34,16 @@ def main(feedback,m):
 
 if __name__ == "__main__":
     p_x,m = polynom_to_array(input("\n [+] enter polynom of lfsr: "))
-    print(f" [+] the calculated bitlength is: {len(main(p_x,m))}")
+    array = main(p_x,m)
+    array[0] = [str(x) for x in array[0]]
+
+    if True:
+        print(f" [+] the calculated bitlength is: {len(array)}\n")
+
+    if True:
+        print(f" [+] bits: {''.join(array[0])}",end="")
+        for i in array[1:len(array)]:
+            print("\n           ",end="")
+            for x in i:
+                print(x,end="")
     print("\n")
